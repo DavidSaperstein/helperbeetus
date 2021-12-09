@@ -8,10 +8,7 @@
 
 .app {
 	@include fill-screen-bottomless;
-	background: url('./assets/edu-lauton-TyQ-0lPp6e4-unsplash.jpg');
-	background-size: cover;
-	background-position: right;
-	background-repeat: no-repeat;
+	background-color: red;
 
 	@include small-media {
 		background-position: 95% bottom;
