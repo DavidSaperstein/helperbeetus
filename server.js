@@ -34,7 +34,7 @@ server.use(cors(corsOptions.origin))
 server.use(serveStatic(__dirname + '/client/build'))
 server.use(morgan('dev'))
 
-// mongoose.connect goes here
+//mongoose.connect goes here
 mongoose.connect(
   'mongodb://localhost:27017/helperbeetus',
   {
@@ -47,7 +47,10 @@ mongoose.connect(
 )
 
 
-//app.use routes go here
+//server.use routes go here
+server.use('/auth', require('./routes/authRouter.js'))
+server.use('/api', expressJwt({secret: process.env.SECRET, algorithms: ['sha1', 'RS256', 'HS256']}))
+server.use('/api/settings', require('./routes/userSettingsRouter.js'))
 
 server.use((err, req, res, next) => {
 	if (err) {
