@@ -4,6 +4,9 @@ const cors = require('cors')
 const express = require('express')
 const path = require('path')
 const serveStatic = require('serve-static')
+const morgan = require('morgan')
+const mongoose = require('mongoose')
+const expressJwt = require('express-jwt')
 
 const server = express()
 
@@ -29,10 +32,22 @@ const corsOptions = {
 server.use(express.json())
 server.use(cors(corsOptions.origin))
 server.use(serveStatic(__dirname + '/client/build'))
+server.use(morgan('dev'))
 
-server.get("/api", (req, res) => {
-	res.send({ message: "Hello World!" })
-})
+// mongoose.connect goes here
+mongoose.connect(
+  'mongodb://localhost:27017/helperbeetus',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  },
+  () => console.log('Connected to the DB')
+)
+
+
+//app.use routes go here
 
 server.use((err, req, res, next) => {
 	if (err) {
