@@ -51,6 +51,7 @@ mongoose.connect(
 server.use('/auth', require('./routes/authRouter.js'))
 server.use('/api', expressJwt({secret: process.env.SECRET, algorithms: ['sha1', 'RS256', 'HS256']}))
 server.use('/api/settings', require('./routes/userSettingsRouter.js'))
+server.use('/api/food', require ('./routes/foodRouter.js'))
 
 server.use((err, req, res, next) => {
 	if (err) {

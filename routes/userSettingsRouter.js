@@ -4,9 +4,9 @@ const User = require('../models/user.js')
 
 //update user settings
 
-userSettingsRouter.put("/:userId", (req, res, next) => {
+userSettingsRouter.put("/update", (req, res, next) => {
   User.findOneAndUpdate(
-    { _id: req.params.userId },
+    { _id: req.user._id },
     req.body,
     { new: true },
     (err, updatedUser) => {
