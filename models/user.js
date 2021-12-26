@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 const bcrypt = require('bcrypt')
 
 const userSchema = new Schema({
-  username: {
+  email: {
     type: String,
     required: true,
     lowercase: true,
@@ -12,6 +12,9 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true
+  },
+  name: {
+    type: String,
   },
   daytimeRatio: {
     type: Number
@@ -24,6 +27,9 @@ const userSchema = new Schema({
   },
   currentBloodsugar: {
     type: Number
+  },
+  lastDose: {
+    type: String
   }
 })
 
