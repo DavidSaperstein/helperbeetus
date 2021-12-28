@@ -5,6 +5,7 @@ export default function Signup(props) {
   const initInputs = {
     username: '',
     password: '',
+    confirm: '',
     name: '',
     daytimeRatio: 0,
     nighttimeRatio: 0,
@@ -24,16 +25,18 @@ export default function Signup(props) {
 
   return (
     <div className='signup-container'>
-      {/* <button></button> go back arrow functionality needs to be added */}
+      <div>
+        {/* <button></button> go back arrow functionality needs to be added */}
+      </div>
       <h1>Account Creation</h1>
       <nav>
         <button>1. Info</button>
         <button>2. Ratio</button>
         <button>3. Ranges</button>
       </nav>
-      {step === 1 && (<UserInfo />)}
-      {step === 2  && (<Ratio />)}
-      {step === 3 && (<Ranges />)}
+      {step === 1 && (<UserInfo inputs={inputs} handleChange={handleChange} />)}
+      {step === 2  && (<Ratio inputs={inputs} handleChange={handleChange} />)}
+      {step === 3 && (<Ranges inputs={inputs} handleChange={handleChange} />)}
     </div>
   )
 }
