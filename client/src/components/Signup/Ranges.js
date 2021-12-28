@@ -5,4 +5,7 @@ export default function Ranges(props) {
 
   const { inputs, handleChange } = props
 
+  return (
+    
+  )
 }

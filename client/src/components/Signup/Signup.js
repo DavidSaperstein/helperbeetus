@@ -7,9 +7,10 @@ export default function Signup(props) {
     password: '',
     confirm: '',
     name: '',
-    daytimeRatio: 0,
-    nighttimeRatio: 0,
-    foodRatio: 0,
+    daytimeRange: 0,
+    nighttimeRange: 0,
+    carbRatio: 0,
+    bloodRatio: 0,
   }
 
   const [inputs, setInputs] = useState(initInputs)
