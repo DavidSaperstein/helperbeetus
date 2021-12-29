@@ -39,8 +39,12 @@ export default function Signup(props) {
       </div>
       <h1>Account Creation</h1>
       <nav>
-        <button>1. Info</button>
-        <button>2. Ratio</button>
+        <button onClick={setStep(2)} disabled={inputs.password != inputs.confirm}>
+          1. Info
+        </button>
+        <button onClick={setStep(1)}>
+          2. Ratio
+        </button>
       </nav>
       {step === 1 && (<UserInfo inputs={inputs} handleChange={handleChange}  setStep={setStep}/>)}
       {step === 2  && (<Ratio inputs={inputs} handleChange={handleChange} handleSignup={handleSignup} />)}

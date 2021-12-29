@@ -48,7 +48,9 @@ export default function UserInfo(props) {
             onChange={handleChange}
             placeholder='Password'
           />
-          {password != confirm && confirm != '' && (<span>Password doesn't match.</span>)}
+          {password != confirm && confirm != '' && 
+            (<span>Password doesn't match.</span>)
+          }
         </label>
         <button
           disabled={password != confirm}
