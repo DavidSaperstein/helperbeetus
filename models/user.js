@@ -16,12 +16,9 @@ const userSchema = new Schema({
   name: {
     type: String,
   },
-  daytimeRatio: {
-    type: Number
-  },
-  bedtimeRatio: {
-    type: Number
-  },
+  bedtime: {
+    type: String,
+  },  
   foodRatio: {
     type: Number
   },

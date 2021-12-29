@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { UserContext } from './../../context/UserProvider.js'
 
 export default function Signup(props) {
+
+  const{ signup, errMsg } = useContext(UserContext)
 
   const initInputs = {
     username: '',
     password: '',
     confirm: '',
     name: '',
-    daytimeRange: 0,
-    nighttimeRange: 0,
     carbRatio: 0,
     bloodRatio: 0,
   }
@@ -24,6 +25,13 @@ export default function Signup(props) {
     }))
   }
 
+  function handleSignup(e){
+    e.preventDefault()
+    const newInputs = {...inputs}
+    delete newInputs[confirm]
+    signup(inputs)
+  }
+
   return (
     <div className='signup-container'>
       <div>
@@ -33,11 +41,9 @@ export default function Signup(props) {
       <nav>
         <button>1. Info</button>
         <button>2. Ratio</button>
-        <button>3. Ranges</button>
       </nav>
-      {step === 1 && (<UserInfo inputs={inputs} handleChange={handleChange} />)}
-      {step === 2  && (<Ratio inputs={inputs} handleChange={handleChange} />)}
-      {step === 3 && (<Ranges inputs={inputs} handleChange={handleChange} />)}
+      {step === 1 && (<UserInfo inputs={inputs} handleChange={handleChange}  setStep={setStep}/>)}
+      {step === 2  && (<Ratio inputs={inputs} handleChange={handleChange} handleSignup={handleSignup} />)}
     </div>
   )
 }

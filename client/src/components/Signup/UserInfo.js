@@ -4,17 +4,23 @@ import { Link } from 'react-router-dom'
 
 export default function UserInfo(props) {
 
-  const { inputs, handleChange } = props
+  const { setStep, handleChange, inputs } = props
+  const { name, email, password, confirm } = inputs
+
+  function handleContinue(e){
+    e.preventDefault()
+    setStep(2)
+  }
 
   return (
     <div>
       <h1>Login info</h1>
       <p>Enter your email and create a password for your login</p>
-      <form>
+      <form onSubmit={handleContinue}>
         <label>Tell us your name
           <input 
             name='Name'
-            value={inputs.name}
+            value={name}
             onChange={handleChange}
             placeholder='Name'
           />
@@ -22,7 +28,7 @@ export default function UserInfo(props) {
         <label>Enter your email
           <input
             name='Email'
-            value={inputs.email}
+            value={email}
             onChange={handleChange}
             placeholder='Email'
           />
@@ -30,7 +36,7 @@ export default function UserInfo(props) {
         <label>Create a password
           <input
             name='Password'
-            value={inputs.password}
+            value={password}
             onChange={handleChange}
             placeholder='Password'
           />
@@ -38,14 +44,18 @@ export default function UserInfo(props) {
         <label>Confirm password
           <input
             name='Confirm'
-            value={inputs.confirm}
+            value={confirm}
             onChange={handleChange}
             placeholder='Password'
           />
+          {password != confirm && confirm != '' && (<span>Password doesn't match.</span>)}
         </label>
+        <button
+          disabled={password != confirm}
+        >
+          Continue
+        </button>
       </form>
-      <button>Continue</button>
     </div>
-  )
-  
+  )  
 }

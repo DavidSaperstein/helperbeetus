@@ -101,8 +101,9 @@ export default function UserProvider(props){
         addFood,
         userAxios,
         getUserFood
-      }}>
+      }}
+    >
       { props.children }
-      </UserContext.Provider>
+    </UserContext.Provider>
   )
 }
