@@ -1,23 +1,27 @@
 import React, { useState, useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { UserContext } from './../../context/UserProvider.js'
+import Ratio from './Ratio.js'
+import UserInfo from './UserInfo.js'
 
 export default function Signup(props) {
+  let navigate = useNavigate()
 
   const{ signup, errMsg } = useContext(UserContext)
 
   const initInputs = {
-    username: '',
+    email: '',
     password: '',
     confirm: '',
     name: '',
-    carbRatio: 0,
-    bloodRatio: 0,
+    carbRatio: '',
+    bloodRatio: ''
   }
 
   const [inputs, setInputs] = useState(initInputs)
-  const [step, setStep] = useState(1)
 
   function handleChange(e){
+    e.preventDefault()
     const {name, value} = e.target
     setInputs(prevInputs => ({
       ...prevInputs,
@@ -25,11 +29,22 @@ export default function Signup(props) {
     }))
   }
 
-  function handleSignup(e){
+  // const [email, setEmail] = useState('')
+  // const [password, setPassword] = useState('')
+  // const [confirm, setConfirm] = useState('')
+  // const [name, setName] = useState('')
+  // const [carbRatio, setCarbRatio] = useState(0)
+  // const [bloodRatio, setBloodRatio] = useState(0)
+  const [step, setStep] = useState(1)
+
+  // const inputs = {email, password, name, carbRatio, bloodRatio, confirm}
+  // const setInputs = {setEmail, setPassword, setConfirm, setName, setCarbRatio, setBloodRatio}
+
+  async function handleSignup(e){
     e.preventDefault()
-    const newInputs = {...inputs}
-    delete newInputs[confirm]
-    signup(inputs)
+    delete inputs.confirm
+    await props.signup(inputs)
+    navigate('/dashboard')
   }
 
   return (
@@ -39,15 +54,15 @@ export default function Signup(props) {
       </div>
       <h1>Account Creation</h1>
       <nav>
-        <button onClick={setStep(2)} disabled={inputs.password != inputs.confirm}>
+        <button onClick={() => setStep(1)} >
           1. Info
         </button>
-        <button onClick={setStep(1)}>
+        <button onClick={() => setStep(2)} disabled={inputs.password !== inputs.confirm}>
           2. Ratio
         </button>
       </nav>
-      {step === 1 && (<UserInfo inputs={inputs} handleChange={handleChange}  setStep={setStep}/>)}
-      {step === 2  && (<Ratio inputs={inputs} handleChange={handleChange} handleSignup={handleSignup} />)}
+      {step === 1 && (<UserInfo inputs={inputs} setInputs={setInputs}  setStep={setStep} handleChange={handleChange} />)}
+      {step === 2  && (<Ratio inputs={inputs} setInputs={setInputs} handleSignup={handleSignup} handleChange={handleChange} />)}
     </div>
   )
 }

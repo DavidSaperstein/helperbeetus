@@ -1,4 +1,5 @@
 import React, {useState, useContext} from 'react'
+import { Link } from 'react-router-dom'
 import { UserContext } from './../context/UserProvider.js'
 
 export default function Login(props) {
@@ -7,17 +8,12 @@ export default function Login(props) {
 
   const { login, errMsg } = useContext(UserContext)
   const [inputs, setInputs] = useState(initInputs)
-
-  function handleChange(e){
-    const {name, value} = e.target
-    setInputs(prevInputs => ({
-      ...prevInputs,
-      [name]: value
-    }))
-  }
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   function handleLogin(e){
     e.preventDefault()
+    const inputs = {email, password}
     login(inputs)
   }
 
@@ -30,7 +26,7 @@ export default function Login(props) {
             type='text'
             value={email}
             name='Email'
-            onChange={handleChange}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder='Email'
           />
         </label>
@@ -39,13 +35,15 @@ export default function Login(props) {
             type='text'
             value={password}
             name='Password'
-            onChange={handleChange}
+            onChange={(e) => setPassword(e.target.value)}
             placeholder='Email'
           />
         </label>
         <input type="submit" value='Login'/>
       </form>
-      <Link>Create an account.</Link> 
+      <label>Don't have an account?
+        <Link to="/create-account">Create account</Link>
+      </label>
     </div>
   )
 }

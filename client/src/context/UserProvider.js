@@ -43,7 +43,6 @@ export default function UserProvider(props){
         const { user, token } = res.data
         localStorage.setItem("token", token)
         localStorage.setItem("user", JSON.stringify(user))
-        getUserIssues()
         setUserState(prevUserState => ({
           ...prevUserState,
           user,
@@ -90,6 +89,19 @@ export default function UserProvider(props){
       })
       .catch(err => console.log(err.response.data.errMsg))
   }
+
+  function editFood(updates, id) {
+    userAxios.put(`/api/food/${id}`, updates)
+      .then(res => {
+        console.log(updates)
+        console.log(res.data)
+        setFoodState(prevState => (
+          prevState.map(food => food._id !== id ? food : res.data)
+        ))
+      })
+      .catch(err => console.error(err))
+  }
+
 
   return (
     <UserContext.Provider

@@ -22,17 +22,17 @@ const foodSchema = new Schema({
   carbCount: {
     type: Number
   },
-  //serving size in grams
-  servingGrams: {
+  //what quantity per serving
+  servingSize: {
     type: Number
   },
-  //serving size in ounces
-  servingOunces: {
-    type: Number
+  //what unit is this measured in? grams, ounces, etc.
+  servingUnit: {
+    type: Text
   },
-  //reduce food dose by this many units
-  reduceBy: {
-    type: Number
+  //notes such as reduce food dose by this many units
+  notes: {
+    type: text
   }
 })
 

@@ -8,7 +8,7 @@
 
 .app {
 	@include fill-screen-bottomless;
-	background-color: red;
+	// background-color: red;
 
 	@include small-media {
 		background-position: 95% bottom;
