@@ -1,18 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { UserContext } from './../context/UserProvider'
 import Welcome from './Welcome.js'
 
 export default function FoodForm(props) {
 
   let navigate = useNavigate()
 
-  const { edit, id, addFood, editFood } = props
+  const { edit, id } = props
+  const { addFood, editFood, getUserFood } = useContext(UserContext)
 
   const initInputs = {
     name: '',
     carbCount: 0,
     servingSize: 0,
     servingUnit: 'g',
+    emergencyFood: 'false',
+    notes: '',
   }
 
   const [inputs, setInputs] = useState(edit ? props.inputs : initInputs)
@@ -29,16 +33,18 @@ export default function FoodForm(props) {
   async function handleAddFood(e) {
     e.preventDefault()
     await addFood(inputs)
+    getUserFood()
     navigate('/myfoods')
   }
 
   async function handleEditFood(e){
     e.preventDefault()
     await editFood(inputs, id)
+    setInputs(initInputs)
     navigate('/myfoods')
   }
 
-  const options = [
+  const options1 = [
     {
       value: 'g',
       label: 'g'
@@ -46,6 +52,17 @@ export default function FoodForm(props) {
     {
       value: 'oz',
       label: 'oz'
+    }
+  ]
+
+  const options2 = [
+    {
+      value: 'false',
+      label: 'Favorites'
+    },
+    {
+      value: 'true',
+      label: 'Good for Lows (15 carb snacks)'
     }
   ]
   
@@ -82,7 +99,7 @@ export default function FoodForm(props) {
           <input
             type='number'
             name='servingSize'
-            value={inputs.carbCount}
+            value={inputs.servingSize}
             onChange={handleChange}
             placeholder='Serving Size'
             required
@@ -92,15 +109,41 @@ export default function FoodForm(props) {
         <label>Unit?
           <select 
             value={inputs.servingUnit}  
-            onChange={handleChange} 
+            onChange={handleChange}
+            required 
           >
-            {opts.map((option) => (
+            {options1.map((option) => (
               <option value={option.value}>
                 {option.label}
               </option>
             ))}
           </select>
         </label>
+
+        <label>Choose a category
+          <select
+            value={inputs.emergencyFood}
+            onChange={handleChange}
+            required
+          >
+            {options2.map((option) => (
+              <option value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </label>
+        
+        <label>Notes
+          <textarea
+            name='notes'
+            value={inputs.notes}
+            onChange={handleChange}
+            placeholder='Ex. I usually dose 1 less unit with this meal.'
+          />
+        </label>
+
+        <button>Save</button>
 
       </form>
     </div>

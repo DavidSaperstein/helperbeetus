@@ -6,15 +6,16 @@ export default function Login(props) {
 
   const initInputs = {email: '', password: ''}
 
-  const { login, errMsg } = useContext(UserContext)
+  const { login, errMsg, getUserFood } = useContext(UserContext)
   const [inputs, setInputs] = useState(initInputs)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  function handleLogin(e){
+  async function handleLogin(e){
     e.preventDefault()
     const inputs = {email, password}
-    login(inputs)
+    await login(inputs)
+    setInputs(initInputs)
   }
 
   return (

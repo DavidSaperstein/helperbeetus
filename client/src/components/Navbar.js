@@ -7,19 +7,19 @@ export default function Navbar(props){
 
   return (
     <div>
-      <Link to='calculator'>
+      <Link to='/calculator'>
         <img></img>
         <span>Calculator</span>
       </Link>
 
-      <Link to='dashboard'>
+      <Link to='/dashboard'>
         <img></img>
         <span>Home</span>
       </Link>
 
-      <Link to='myfood'>
+      <Link to='/myfoods'>
         <img></img>
-        <span>My Food</span>
+        <span>My Foods</span>
       </Link>
     </div>
   )

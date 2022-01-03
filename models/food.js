@@ -28,11 +28,11 @@ const foodSchema = new Schema({
   },
   //what unit is this measured in? grams, ounces, etc.
   servingUnit: {
-    type: Text
+    type: String
   },
   //notes such as reduce food dose by this many units
   notes: {
-    type: text
+    type: String
   }
 })
 

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 export default function Ratio(props) {
 
   const { inputs, handleChange, handleSignup } = props
-  const { carbRatio, bloodRatio, password, confirm } = inputs
+  const { foodRatio, bloodRatio, password, confirm } = inputs
 
 
   return (
@@ -17,8 +17,8 @@ export default function Ratio(props) {
           <div>1 unit per 
             <input
               type='number'
-              name='carbRatio'
-              value={carbRatio}
+              name='foodRatio'
+              value={foodRatio}
               onChange={handleChange}
             /> carbs
           </div>

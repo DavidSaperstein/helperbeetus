@@ -14,7 +14,7 @@ export default function Signup(props) {
     password: '',
     confirm: '',
     name: '',
-    carbRatio: '',
+    foodRatio: '',
     bloodRatio: ''
   }
 
@@ -44,6 +44,7 @@ export default function Signup(props) {
     e.preventDefault()
     delete inputs.confirm
     await props.signup(inputs)
+    setInputs(initInputs)
     navigate('/dashboard')
   }
 

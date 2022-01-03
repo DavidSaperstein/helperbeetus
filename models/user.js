@@ -22,6 +22,9 @@ const userSchema = new Schema({
   foodRatio: {
     type: Number
   },
+  bloodRatio: {
+    type: Number
+  },
   currentBloodsugar: {
     type: Number
   },

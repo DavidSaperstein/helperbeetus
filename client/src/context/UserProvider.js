@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 export const UserContext = React.createContext()
 
@@ -12,6 +13,7 @@ userAxios.interceptors.request.use(config => {
 })
 
 export default function UserProvider(props){
+  let navigate = useNavigate()
 
   const initState = {
     user: JSON.parse(localStorage.getItem("user")) || {},
@@ -21,6 +23,7 @@ export default function UserProvider(props){
   }
 
   const [userState, setUserState] = useState(initState)
+  const [listState, setListState] = useState('favorite')
 
   function signup(credentials){
     axios.post("/auth/signup", credentials)
@@ -48,6 +51,8 @@ export default function UserProvider(props){
           user,
           token,
         }))
+        getUserFood()
+        console.log(userState)
       })
       .catch(err => handleAuthErr(err.response.data.errMsg))
   }
@@ -59,6 +64,7 @@ export default function UserProvider(props){
       user: {},
       token: "",
     })
+    navigate('/')
   }
 
   function handleAuthErr(errMsg){
@@ -69,8 +75,10 @@ export default function UserProvider(props){
   }
 
   function getUserFood(){
+    console.log("getting user food")
     userAxios.get("/api/food/user")
       .then(res => {
+        console.log("res", res)
         setUserState(prevState => ({
           ...prevState,
           food: res.data
@@ -93,11 +101,10 @@ export default function UserProvider(props){
   function editFood(updates, id) {
     userAxios.put(`/api/food/${id}`, updates)
       .then(res => {
-        console.log(updates)
-        console.log(res.data)
-        setFoodState(prevState => (
-          prevState.map(food => food._id !== id ? food : res.data)
-        ))
+        setUserState(prevState => ({
+          ...prevState,
+          food: prevState.food.map(food => food._id !== id ? food : res.data)
+        }))
       })
       .catch(err => console.error(err))
   }
@@ -106,11 +113,14 @@ export default function UserProvider(props){
   return (
     <UserContext.Provider
       value={{
-        ...userState,
+        userState,
+        listState,
+        setListState,
         signup,
         login,
         logout,
         addFood,
+        editFood,
         userAxios,
         getUserFood
       }}
