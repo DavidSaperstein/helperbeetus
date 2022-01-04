@@ -1,0 +1,103 @@
+@import '../variables.scss';
+
+.login-page {
+  @include center-v;
+  @include fill-screen-bottomless;
+
+  .hero {
+    width: 100%;
+  }
+
+  .login-section {
+    padding: 5%;
+    width: 100%;
+
+    .form-container{
+      @include center-v;
+      align-items: start;
+      width: 100%;
+
+      h1 {
+        @include primary-font;
+        font-size: 2.8rem;
+        font-weight: 700;
+        line-height: 3.2rem;
+        color: $textBlack;
+        margin-bottom: 2.4rem;
+      }
+
+      label {
+        @include center-v;
+        align-items: start;
+        width: 100%;
+        @include label-font;
+
+        .login-input {
+          background-color: $secondary;
+          align-self: stretch;
+          padding: 1rem 1.6rem;
+          @include round-corners-small;
+          border: none;
+          border-bottom: $shadow 0.4rem solid;
+          font-size: 1.6rem;
+          line-height: 2.2rem;
+          height: 4.4rem;
+          margin: 0.8rem 0;
+        }
+      }
+
+      .login-button {
+        border: none;
+        outline: none;
+        background-color: $primary;
+        @include round-corners-medium;
+        font-size: 1.6rem;
+        line-height: 1.8rem;
+        color: $secondary;
+        @include primary-font;
+        width: 20rem;
+        height: 4.8rem;
+        align-self: center;
+        margin: 2.4rem 0;
+      }
+      
+    }
+    .create-account-label {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      @include label-font;
+
+      .create-account-link {
+        align-self: center;
+        margin: 0.8rem 0;
+
+        .create-account {
+          border: none;
+          color: $primary;
+          @include primary-font;
+          font-weight: 500;
+          font-size: 1.6rem;
+          line-height: 1.8rem;
+          align-self: center;
+          width: 17.7rem;
+          height: 4rem;
+          padding: 0.8rem 1.6rem;
+          box-shadow: rgba(76, 76, 79, 0.15) 0.2rem 0.2rem 0.8rem;
+          @include round-corners-medium;
+          @include center-h;
+
+          span {
+            margin-left: 0.8rem;
+            @include primary-font;
+            font-weight: 500;
+            font-size: 1.6rem;
+            line-height: 1.8rem;  
+          }
+
+        }
+      }
+    }
+  }
+}
+

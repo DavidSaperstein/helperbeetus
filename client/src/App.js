@@ -57,7 +57,7 @@ function App() {
         element={<Calculator />}
       />
       </Routes>
-      <Navbar />
+      {token && <Navbar />}
     </div>
   )
 }

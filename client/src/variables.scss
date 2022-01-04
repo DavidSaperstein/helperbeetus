@@ -1,3 +1,24 @@
+//fonts
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Ubuntu&display=swap');
+
+@mixin primary-font {
+	font-family: 'Ubuntu', sans-serif;
+}
+
+@mixin secondary-font {
+	font-family: 'Open Sans', sans-serif;	
+}
+
+@mixin label-font {
+	color: $textGray;
+	@include secondary-font;
+	font-size: 1.2rem;
+	line-height: 1.6rem;
+}
+
+//alignment
+
 @mixin center-h {
 	display: flex;
 	align-items: center;
@@ -39,3 +60,25 @@ $tablet: 700px;
 @mixin tablet-and-larger {
 	@media screen and (min-width: $tablet) { @content };
 }
+
+@mixin round-corners-small {
+	border-radius: 0.2rem;
+}
+
+@mixin round-corners-medium {
+	border-radius: 0.8rem;
+}
+
+
+//colors
+
+$background: #E5E5E5;
+$primary: #7354F0;
+$secondary: #F7F7FF;
+$headingColor: #311882;
+$textBlack: #262627;
+$textGray: #717181; //also back-arrow
+$textWhite: #F7F7FF;
+$accentYellow: #F9CC4D;
+$accentGreen: #48C5B4;
+$shadow: #EBE8ED;
