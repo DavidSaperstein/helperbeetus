@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { UserContext } from './../context/UserProvider.js'
-import FoodCard from './FoodCard.js'
+import { UserContext } from '../context/UserProvider.js'
+import FoodCard from './FoodCard.jsx'
 
 export default function FoodList(props){
 

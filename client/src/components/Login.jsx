@@ -1,6 +1,6 @@
 import React, {useState, useContext} from 'react'
 import { Link } from 'react-router-dom'
-import { UserContext } from './../context/UserProvider.js'
+import { UserContext } from '../context/UserProvider.js'
 import PlusSignSmall from '../assets/PlusSignSmall.jsx'
 import hero from './../assets/hero.svg'
 import plus from './../assets/plus-sign-small.svg'

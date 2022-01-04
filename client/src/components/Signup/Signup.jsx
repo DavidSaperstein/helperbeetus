@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from './../../context/UserProvider.js'
 import Ratio from './Ratio.js'
-import UserInfo from './UserInfo.js'
+import UserInfo from './UserInfo.jsx'
 
 export default function Signup(props) {
   let navigate = useNavigate()
