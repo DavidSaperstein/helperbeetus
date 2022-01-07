@@ -1,13 +1,29 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { UserContext } from '../context/UserProvider.jsx'
+import { useLocation } from 'react-router-dom'
+import Arrow from './Arrow.jsx'
+import SettingsWheel from './SettingsWheel.jsx'
+import './Welcome.scss'
 
 export default function Welcome(props){
 
+  const { userState } = useContext(UserContext)
+  const location = useLocation().pathname
+  const newLocation = location.split("/").pop().split("_").join(" ")
+
+  console.log(newLocation)
+  
+
   return (
-    <div>
-      {props.dashboard && (<Link to='/dashboard'>Arrow Icon</Link>)}
-      <p>Welcome, {props.name}</p>
-      <Link to='/mysettings'>Wheel Icon</Link>
-    </div>
+    <header>
+      <div className='header-top-container'>
+        <div className='welcome-left'>
+          {location !== '/dashboard' && <Arrow /> }
+          <p className='welcome-statement'>Welcome, {userState.user.firstName}</p>
+        </div>
+        <SettingsWheel />
+      </div>
+      <h1 className='page-name'>{newLocation}</h1>
+    </header>
   )
 }

@@ -1,12 +1,13 @@
 import React, {useState, useContext} from 'react'
-import { Link } from 'react-router-dom'
-import { UserContext } from '../context/UserProvider.js'
+import { Link, useLocation } from 'react-router-dom'
+import { UserContext } from '../context/UserProvider.jsx'
 import PlusSignSmall from '../assets/PlusSignSmall.jsx'
 import hero from './../assets/hero.svg'
 import plus from './../assets/plus-sign-small.svg'
 import './Login.scss'
 
 export default function Login(props) {
+
 
   const initInputs = {email: '', password: ''}
 
@@ -23,7 +24,7 @@ export default function Login(props) {
   }
 
   return (
-    <main className='login-page'>
+    <main className='login-page fullscreen'>
       <img 
         className='hero' 
         src={hero} 

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
-import { UserContext } from './../context/UserProvider.js'
-import Welcome from './Welcome.js'
-import Navbar from './Navbar.js'
+import { UserContext } from './../context/UserProvider.jsx'
+import Welcome from './Welcome.jsx'
+import Navbar from './Navbar.jsx'
 
 
 export default function Calculator(props) {
@@ -38,7 +38,7 @@ export default function Calculator(props) {
   }
 
   return (
-    <div>
+    <main className="middle-screen">
       <Welcome />
       <h1>Calculator</h1>
       <form onSubmit={handleCalculation}>
@@ -80,6 +80,6 @@ export default function Calculator(props) {
         <div>{ recommendedDose } Units</div>
       </label>
       <Navbar />
-    </div>
+    </main>
   )
 }

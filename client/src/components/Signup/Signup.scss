@@ -1,0 +1,46 @@
+@import '../../variables.scss';
+
+.signup-page {
+  @include center-v;
+  @include fill-screen-bottomless;
+  width: 100%;
+
+  .account-creation-section {
+    @include center-v;
+    width: 100%;
+
+    h1 {
+      @include primary-font;
+      font-size: 2rem;
+      line-height: 2.3rem;
+      font-weight: 700;
+      color: $textBlack;
+      margin-bottom: 1.8rem;
+    }
+
+    .account-creation-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin-bottom: 1.8rem;
+      
+      .account-creation-nav-button {
+        @include center-v;
+        padding: 0.6rem 1.3rem;
+        width: 6.8rem;
+        height: 2.8rem;
+        border: none;
+        border-bottom: $shadow 0.4rem solid;
+        background-color: #FFFFFF;
+        color: $textGray;
+        @include secondary-font;
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+        align-items: center;
+        text-align: center;
+      }
+
+    }
+  }
+}

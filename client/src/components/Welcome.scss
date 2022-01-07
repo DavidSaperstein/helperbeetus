@@ -1,0 +1,43 @@
+@import '../variables.scss';
+
+header {
+  padding: 0 1.6rem;
+  filter: drop-shadow(0 0.2rem 0.8rem rgba(116, 116, 126, 0.1));
+  @include fade-shadow;
+  width: 100%;
+  grid-row: 1;
+  height: 9.6rem;
+
+  .header-top-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4rem;
+    margin-top: 1.7rem;
+    
+    .welcome-left {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+    }
+    
+    .welcome-statement {
+      @include secondary-font;
+      color: $headingColor;
+      line-height: 2.2rem;
+      font-size: 1.6rem;
+      border-bottom: 0.1rem solid $accentYellow;
+    }
+  }
+  
+  .page-name {
+    text-transform: capitalize;
+    @include primary-font;
+    color: $textBlack;
+    font-size: 2.8rem;
+    font-weight: 700;
+    width: 100%;
+    margin-bottom: 0.8rem;
+  }
+}

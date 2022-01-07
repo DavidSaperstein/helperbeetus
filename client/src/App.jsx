@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useReducer, useContext } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { UserContext } from './context/UserProvider.js'
+import { UserContext } from './context/UserProvider.jsx'
 import './App.scss'
 import Login from './components/Login.jsx'
 import Signup from './components/Signup/Signup.jsx'
@@ -10,6 +10,7 @@ import Navbar from './components/Navbar.jsx'
 import MyFoods from './components/MyFoods.jsx'
 import Calculator from './components/Calculator.jsx'
 import FoodForm from './components/FoodForm.jsx'
+import Welcome from './components/Welcome.jsx'
 
 
 
@@ -21,42 +22,43 @@ function App() {
 
 
   return (
-    <div className="app">
-      <Routes>
-      <Route
-          path="/"
-          element={token ? <Navigate to="/dashboard"/> : <Login />}
-      />
-      <Route
-        path="/create-account"
-        element={<Signup signup={signup}/>}
-      />
-      <Route
-        path="/dashboard"
-        element={<Dashboard user={user}/>}
-      />
-      <Route
-        path="/myfoods"
-        element={<MyFoods />}
-      />
-      {/* // <Route
-        path="/mysettings"
-        render={() => <Settings />}
-      /> */}
-      <Route
-        path="/myfoods/addfood"
-        element={<FoodForm />}
-      />
-      <Route
-        path="/myfoods/editfood"
-        element={<FoodForm edit={true}/>}
-      />
+    <div className='app'>
+      {token && <Welcome />}
+        <Routes>
+        <Route
+            path="/"
+            element={token ? <Navigate to="/dashboard"/> : <Login />}
+        />
+        <Route
+          path="/create_account"
+          element={<Signup signup={signup}/>}
+        />
+        <Route
+          path="/dashboard"
+          element={<Dashboard user={user}/>}
+        />
+        <Route
+          path="/my_foods"
+          element={<MyFoods />}
+        />
+        {/* // <Route
+          path="/mysettings"
+          render={() => <Settings />}
+        /> */}
+        <Route
+          path="/my_foods/add_food"
+          element={<FoodForm />}
+        />
+        <Route
+          path="/myfoods/edit_food"
+          element={<FoodForm edit={true}/>}
+        />
 
-      <Route
-        path="/calculator"
-        element={<Calculator />}
-      />
-      </Routes>
+        <Route
+          path="/calculator"
+          element={<Calculator />}
+        />
+        </Routes>
       {token && <Navbar />}
     </div>
   )

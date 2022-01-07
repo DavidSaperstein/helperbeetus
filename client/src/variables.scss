@@ -82,3 +82,36 @@ $textWhite: #F7F7FF;
 $accentYellow: #F9CC4D;
 $accentGreen: #48C5B4;
 $shadow: #EBE8ED;
+
+@mixin fade-shadow {
+	box-shadow: rgba(104, 104, 118, 0.15) 0.2rem 0.2rem 0.8rem;
+}
+
+//inputs
+@mixin text-inputs {
+	@include round-corners-small;
+	background-color: $secondary;
+	align-self: stretch;
+	padding: 1rem 1.6rem;
+	border: none;
+	border-bottom: $shadow 0.4rem solid;
+	font-size: 1.6rem;
+	line-height: 2.2rem;
+	height: 4.4rem;
+	margin: 0.8rem 0;
+}
+
+//buttons
+@mixin rounded-buttons {
+	@include primary-font;
+	border: none;
+	outline: none;
+	@include round-corners-medium;
+	font-size: 1.6rem;
+	line-height: 1.8rem;
+	font-weight: 600;
+	@include primary-font;
+	text-transform: uppercase;
+	align-self: center;
+	margin: 2.4rem 0;
+}

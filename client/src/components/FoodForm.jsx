@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { UserContext } from './../context/UserProvider'
-import Welcome from './Welcome.js'
+import { UserContext } from './../context/UserProvider.jsx'
+import Welcome from './Welcome.jsx'
 
 export default function FoodForm(props) {
 
@@ -68,8 +68,7 @@ export default function FoodForm(props) {
   
   
   return (
-    <div>
-      <Welcome />
+    <main className="middle-screen">
       <h1>{edit ? 'Edit Food' : 'Add Food'}</h1>
       <div>Enter food info and any notes to go with it.</div>
       <form onSubmit={edit ? handleEditFood : handleAddFood}>
@@ -146,6 +145,6 @@ export default function FoodForm(props) {
         <button>Save</button>
 
       </form>
-    </div>
+    </main>
   )
 }

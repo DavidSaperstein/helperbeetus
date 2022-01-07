@@ -1,8 +1,9 @@
 import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { UserContext } from './../../context/UserProvider.js'
-import Ratio from './Ratio.js'
+import { UserContext } from './../../context/UserProvider.jsx'
+import Ratio from './Ratio.jsx'
 import UserInfo from './UserInfo.jsx'
+import './Signup.scss'
 
 export default function Signup(props) {
   let navigate = useNavigate()
@@ -13,9 +14,9 @@ export default function Signup(props) {
     email: '',
     password: '',
     confirm: '',
-    name: '',
-    foodRatio: '',
-    bloodRatio: ''
+    firstName: '',
+    foodRatio: 0,
+    bloodRatio: 0
   }
 
   const [inputs, setInputs] = useState(initInputs)
@@ -29,16 +30,8 @@ export default function Signup(props) {
     }))
   }
 
-  // const [email, setEmail] = useState('')
-  // const [password, setPassword] = useState('')
-  // const [confirm, setConfirm] = useState('')
-  // const [name, setName] = useState('')
-  // const [carbRatio, setCarbRatio] = useState(0)
-  // const [bloodRatio, setBloodRatio] = useState(0)
   const [step, setStep] = useState(1)
 
-  // const inputs = {email, password, name, carbRatio, bloodRatio, confirm}
-  // const setInputs = {setEmail, setPassword, setConfirm, setName, setCarbRatio, setBloodRatio}
 
   async function handleSignup(e){
     e.preventDefault()
@@ -49,21 +42,38 @@ export default function Signup(props) {
   }
 
   return (
-    <div className='signup-container'>
-      <div>
-        {/* <button></button> go back arrow functionality needs to be added */}
+    <main className='signup-page fullscreen'>
+      <div className='account-creation-section'>
+        <div>
+          {/* <button></button> go back arrow functionality needs to be added */}
+        </div>
+        <h1 >Account Creation</h1>
+        <nav className='account-creation-nav'>
+          <button 
+            className='account-creation-nav-button' 
+            onClick={() => setStep(1)}
+            style={{ 
+              color: step === 1 && '#7354F0',
+              borderBottom: step === 1 && '#7354F0 0.4rem solid'
+            }} 
+          >
+            1. Info
+          </button>
+          <button 
+            className='account-creation-nav-button' 
+            onClick={() => setStep(2)}
+            style={{ 
+              color: step === 2 && '#7354F0', 
+              borderBottom: step === 2 && '#7354F0 0.4rem solid'
+            }} 
+            disabled={inputs.password !== inputs.confirm}
+          >
+            2. Ratio
+          </button>
+        </nav>
+        {step === 1 && (<UserInfo inputs={inputs} setInputs={setInputs}  setStep={setStep} handleChange={handleChange} />)}
+        {step === 2  && (<Ratio inputs={inputs} setInputs={setInputs} handleSignup={handleSignup} handleChange={handleChange} />)}
       </div>
-      <h1>Account Creation</h1>
-      <nav>
-        <button onClick={() => setStep(1)} >
-          1. Info
-        </button>
-        <button onClick={() => setStep(2)} disabled={inputs.password !== inputs.confirm}>
-          2. Ratio
-        </button>
-      </nav>
-      {step === 1 && (<UserInfo inputs={inputs} setInputs={setInputs}  setStep={setStep} handleChange={handleChange} />)}
-      {step === 2  && (<Ratio inputs={inputs} setInputs={setInputs} handleSignup={handleSignup} handleChange={handleChange} />)}
-    </div>
+    </main>
   )
 }

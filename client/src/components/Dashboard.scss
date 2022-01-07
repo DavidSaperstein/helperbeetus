@@ -1,0 +1,58 @@
+@import '../variables.scss';
+
+.dashboard-page {
+
+  .dashboard-check-history {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+
+    .check-history {
+      width: 14.8rem;
+      height: 8rem;
+      @include round-corners-medium;
+      border: $shadow 0.1rem solid;
+      @include fade-shadow;
+
+      h2 {
+        @include secondary-font;
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+        color: $textGray;
+        font-weight: normal;
+        border-bottom: $shadow 0.1rem solid;
+        margin: 0.4rem 1.2rem;
+      }
+
+      p {
+        @include primary-font;
+        font-size: 2.4rem;
+        color: $headingColor;
+        font-weight: 700;
+        line-height: 4rem;
+        text-align: center;
+        align-self: center;
+        justify-self: center;
+
+        span {
+          @include secondary-font;
+          font-size: 1.2rem;
+          line-height: 1.6rem;
+          color: $textBlack;
+          font-weight: normal;
+          margin-left: 0.4rem;
+        }
+      }
+
+    }
+
+    .left {
+      border-left: 0.9rem solid $primary;
+    }
+    
+    .right {
+      border-left: 0.9rem solid $accentGreen;
+    }
+    
+  }
+}

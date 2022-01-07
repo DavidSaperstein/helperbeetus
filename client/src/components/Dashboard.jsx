@@ -1,10 +1,8 @@
 import React, { useContext, useEffect } from 'react'
-import { UserContext } from './../context/UserProvider.js'
-import Welcome from './Welcome.js'
-import Navbar from './Navbar.js'
+import { UserContext } from './../context/UserProvider.jsx'
+import './Dashboard.scss'
 
 export default function Dashboard(props){
-
   const { getUserFood, listState, setListState, userState, logout } = useContext(UserContext)
 
   useEffect(() => {
@@ -20,19 +18,22 @@ export default function Dashboard(props){
   }, [userState.token])
 
   return (
-    <div>
-      <Welcome dashboard={true}/>
-      <h1>Dashboard</h1>
-      <div>
-        <h2>Last Check</h2>
-        {/* <p>{userState.user.lastDose ? userState.user.lastDose : ''}</p> */}
+    <div className='dashboard-page middle-screen'>
+      <div className='dashboard-check-history'>
+        <div className='check-history left'>
+          <h2>Last Check</h2>
+          <p>
+            100
+            <span>mg/dL</span>
+          </p>
+        </div>
+        <div className='check-history right'>
+          <h2>Next Check</h2>
+          <p>0
+            <span></span>
+          </p>
+        </div>
       </div>
-      <div>
-        <h2>Next Check</h2>
-        <p>Time</p>
-      </div>
-      <button onClick={logout}>Logout</button>
-      <Navbar />
     </div>
   )
 }
