@@ -39,8 +39,6 @@ export default function Calculator(props) {
 
   return (
     <main className="middle-screen">
-      <Welcome />
-      <h1>Calculator</h1>
       <form onSubmit={handleCalculation}>
 
         <label>Enter carbs or seleft from 'My Foods'
@@ -79,7 +77,6 @@ export default function Calculator(props) {
       <label>Recommended Dose
         <div>{ recommendedDose } Units</div>
       </label>
-      <Navbar />
     </main>
   )
 }

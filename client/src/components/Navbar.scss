@@ -10,7 +10,7 @@ footer {
   @include fade-shadow;
 
 
-  .navbar-links {
+  .navbar-link {
     width: 12rem;
     height: 100%;
     display: flex;
@@ -18,12 +18,11 @@ footer {
     justify-content: center;
     align-items: center;
 
-    img {
-      width: 100%;
-    }
+    // img {
+    // }
 
-    h3 {
-      width: 100%;
-    }
+    // h3 {
+    //   width: 100%;
+    // }
   }
 }

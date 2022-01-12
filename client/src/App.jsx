@@ -11,6 +11,7 @@ import MyFoods from './components/MyFoods.jsx'
 import Calculator from './components/Calculator.jsx'
 import FoodForm from './components/FoodForm.jsx'
 import Welcome from './components/Welcome.jsx'
+import  Settings  from './components/Settings.jsx'
 
 
 
@@ -41,10 +42,10 @@ function App() {
           path="/my_foods"
           element={<MyFoods />}
         />
-        {/* // <Route
-          path="/mysettings"
+        // <Route
+          path="/my_settings"
           render={() => <Settings />}
-        /> */}
+        />
         <Route
           path="/my_foods/add_food"
           element={<FoodForm />}

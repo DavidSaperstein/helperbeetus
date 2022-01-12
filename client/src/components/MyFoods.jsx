@@ -38,7 +38,6 @@ export default function MyFoods(props){
         {userState.food.length > 0 ? <FoodList list={listState} /> : <p>No food found</p>}
       </div>
       <Link to='/my_foods/add_food'>Add Food</Link>
-      <Navbar />
     </main>
   )
 }

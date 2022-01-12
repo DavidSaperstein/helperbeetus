@@ -11,20 +11,26 @@ export default function Navbar(props){
 
   return (
     <footer>
-      <Link to='/calculator' className='navbar-link'>
-        <img src={calculator} alt={'calulator'} />
-        <h3>Calculator</h3>
-      </Link>
+      <div className='navbar-link'>
+        <Link to='/calculator'>
+          <img src={calculator} alt={'calulator'} />
+          <h3>Calculator</h3>
+        </Link>
+      </div>
 
-      <Link to='/dashboard' className='navbar-link'>
-        <img src={home} alt={'home'} />
-        <h3>Home</h3>
-      </Link>
+      <div className='navbar-link'>
+        <Link to='/dashboard' className='navbar-link'>
+          <img src={home} alt={'home'} />
+          <h3>Home</h3>
+        </Link>
+      </div>
 
-      <Link to='/my_foods' className='navbar-link'>
-        <img src={food} alt={'food'} />
-        <h3>My Foods</h3>
-      </Link>
+      <div className='navbar-link'>
+        <Link to='/my_foods' className='navbar-link'>
+          <img src={food} alt={'food'} />
+          <h3>My Foods</h3>
+        </Link>
+      </div>
     </footer>
   )
 }

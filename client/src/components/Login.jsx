@@ -63,7 +63,7 @@ export default function Login(props) {
           Don't have an account?
           <Link 
             className='create-account-link' 
-            to="/create-account"
+            to="/create_account"
           >
             <button className='create-account'>
               <PlusSignSmall color={'#7354F0'} />

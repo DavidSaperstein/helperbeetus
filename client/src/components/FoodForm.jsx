@@ -34,14 +34,14 @@ export default function FoodForm(props) {
     e.preventDefault()
     await addFood(inputs)
     getUserFood()
-    navigate('/myfoods')
+    navigate('/my_foods')
   }
 
   async function handleEditFood(e){
     e.preventDefault()
     await editFood(inputs, id)
     setInputs(initInputs)
-    navigate('/myfoods')
+    navigate('/my_foods')
   }
 
   const options1 = [
