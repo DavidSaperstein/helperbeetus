@@ -33,7 +33,7 @@ const helperbeetus_userSchema = new Schema({
   }
 })
 
-const userSChema = helperbeetus_userSchema
+const userSchema = helperbeetus_userSchema
 // pre-save hook to encrypt user passwords on signup
 
 userSchema.pre("save", function(next){
