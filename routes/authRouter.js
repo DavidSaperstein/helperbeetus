@@ -1,10 +1,10 @@
 const express = require('express')
 const authRouter = express.Router()
-const User = require('../models/user.js')
+const Helperbeetus_user = require('../models/user.js')
 const jwt = require('jsonwebtoken')
 
 authRouter.post("/signup", (req, res, next) => {
-  User.findOne({ email: req.body.email.toLowerCase() }, (err, user) => {
+  Helperbeetus_user.findOne({ email: req.body.email.toLowerCase() }, (err, user) => {
     if(err){
       res.status(500)
       return next(err)
@@ -13,7 +13,7 @@ authRouter.post("/signup", (req, res, next) => {
       res.status(403)
       return next(new Error("That email is already taken"))
     }
-    const newUser = new User(req.body)
+    const newUser = new Helperbeetus_user(req.body)
     newUser.save((err, savedUser) => {
       if(err){
         return next(err)
@@ -26,7 +26,7 @@ authRouter.post("/signup", (req, res, next) => {
 
 //Login
 authRouter.post("/login", (req, res, next) => {
-  User.findOne({ email: req.body.email.toLowerCase() }, (err, user) => {
+  Helperbeetus_user.findOne({ email: req.body.email.toLowerCase() }, (err, user) => {
     if(err){
       res.status(500)
       return next(err)

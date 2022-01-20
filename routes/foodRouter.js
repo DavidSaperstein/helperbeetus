@@ -1,10 +1,10 @@
 const express = require('express')
 const foodRouter = express.Router()
-const Food = require('../models/food.js')
+const Helperbeetus_food = require('../models/food.js')
 
 //get food by user id
 foodRouter.get("/user", (req, res, next) => {
-  Food.find({ user: req.user._id }, (err, foods) => {
+  Helperbeetus_food.find({ user: req.user._id }, (err, foods) => {
     if(err) {
       res.status(500)
       return next(err)
@@ -15,7 +15,7 @@ foodRouter.get("/user", (req, res, next) => {
 
 //get food by food id
 foodRouter.get("/:foodId", (req, res, next) => {
-  Food.findById(req.params.foodId, (err, food) => {
+  Helperbeetus_food.findById(req.params.foodId, (err, food) => {
     if(err) {
       res.status(500)
       return next(err)
@@ -33,7 +33,7 @@ foodRouter.post("/", (req, res, next) => {
   //   }
   // })
   req.body.user = req.user._id
-  const newFood = new Food(req.body)
+  const newFood = new Helperbeetus_food(req.body)
   newFood.save((err, savedFood) => {
     if(err){
       res.status(500)
@@ -45,7 +45,7 @@ foodRouter.post("/", (req, res, next) => {
 
 //delete food
 foodRouter.delete("/:foodId", (req, res, next) => {
-  Food.findOneAndDelete(
+  Helperbeetus_food.findOneAndDelete(
     { _id: req.params.foodId, user: req.user._id },
     (err, deletedfood) => {
       if(err){
@@ -61,7 +61,7 @@ foodRouter.delete("/:foodId", (req, res, next) => {
 foodRouter.put("/:foodId", (req, res, next) => {
   console.log(req.user._id)
   console.log(req.body.upvotes)
-  Food.findOneAndUpdate(
+  Helperbeetus_food.findOneAndUpdate(
     { _id: req.params.foodId },
     req.body,
     { new: true },

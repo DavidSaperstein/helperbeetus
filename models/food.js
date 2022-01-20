@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const bcrypt = require('bcrypt')
 
-const foodSchema = new Schema({
+const helperbeetus_foodSchema = new Schema({
   //the user who input the food
   user: {
     type: Schema.Types.ObjectId,
@@ -36,4 +36,4 @@ const foodSchema = new Schema({
   }
 })
 
-module.exports = mongoose.model("Food", foodSchema)
+module.exports = mongoose.model("Helperbeetus_food", foodSchema)

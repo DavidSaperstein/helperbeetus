@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const bcrypt = require('bcrypt')
 
-const userSchema = new Schema({
+const helperbeetus_userSchema = new Schema({
   email: {
     type: String,
     required: true,
@@ -33,6 +33,7 @@ const userSchema = new Schema({
   }
 })
 
+const userSChema = helperbeetus_userSchema
 // pre-save hook to encrypt user passwords on signup
 
 userSchema.pre("save", function(next){
@@ -60,4 +61,4 @@ userSchema.methods.withoutPassword = function(){
   return user
 }
 
-module.exports = mongoose.model("User", userSchema)
+module.exports = mongoose.model("Helperbeetus_user", helperbeetus_userSchema)
