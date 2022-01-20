@@ -35,17 +35,28 @@ server.use(serveStatic(__dirname + '/client/build'))
 server.use(morgan('dev'))
 
 //mongoose.connect goes here
-mongoose.connect(
-  'mongodb://localhost:27017/helperbeetus',
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false
-  },
-  () => console.log('Connected to the DB')
+// mongoose.connect(
+//   'mongodb://localhost:27017/helperbeetus',
+//   {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     useCreateIndex: true,
+//     useFindAndModify: false
+//   },
+//   () => console.log('Connected to the DB')
+// )
+
+mongoose.connect(process.env.MONGODB_URI, 
+	{   useNewUrlParser: true,
+			useUnifiedTopology: true,
+			useCreateIndex: true,
+			useFindAndModify: false 
+	}
 )
 
+server.get("/hello", (req, res) => {
+	res.send({ message: "Hello World!" })
+})
 
 //server.use routes go here
 server.use('/auth', require('./routes/authRouter.js'))
