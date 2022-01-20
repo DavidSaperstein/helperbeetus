@@ -3,8 +3,12 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 export const UserContext = React.createContext()
+const baseURL = process.env.REACT_APP_IS_PRODUCTION ? 'https://helperbeetus.herokuapp.com' : 'http://localhost:8080'
 
-const userAxios = axios.create()
+
+const userAxios = axios.create( {
+  baseURL: baseURL
+})
 
 userAxios.interceptors.request.use(config => {
   const token = localStorage.getItem("token")
@@ -26,7 +30,7 @@ export default function UserProvider(props){
   const [listState, setListState] = useState('favorite')
 
   function signup(credentials){
-    axios.post("/auth/signup", credentials)
+    axios.post(baseURL + "/auth/signup", credentials)
       .then(res => {
         const { user, token } = res.data
         localStorage.setItem("token", token)
@@ -41,7 +45,7 @@ export default function UserProvider(props){
   }
 
   function login(credentials){
-    axios.post("/auth/login", credentials)
+    axios.post(baseURL + "/auth/login", credentials)
       .then(res => {
         const { user, token } = res.data
         localStorage.setItem("token", token)
