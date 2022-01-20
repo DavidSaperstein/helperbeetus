@@ -36,4 +36,4 @@ const helperbeetus_foodSchema = new Schema({
   }
 })
 
-module.exports = mongoose.model("Helperbeetus_food", foodSchema)
+module.exports = mongoose.model("Helperbeetus_food", helperbeetus_foodSchema)
