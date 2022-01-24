@@ -39,6 +39,7 @@ export default function Calculator(props) {
 
   return (
     <main className="middle-screen">
+      
       <form onSubmit={handleCalculation}>
 
         <label>Enter carbs or seleft from 'My Foods'
