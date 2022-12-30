@@ -46,7 +46,7 @@ export default function Login(props) {
           <label>Enter password
             <input
               className='login-input'
-              type='text'
+              type='password'
               value={password}
               name='Password'
               onChange={(e) => setPassword(e.target.value)}
