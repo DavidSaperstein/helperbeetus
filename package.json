@@ -26,5 +26,6 @@
   "devDependencies": {
     "@svgr/cli": "^6.1.2",
     "nodemon": "^2.0.12"
-  }
+  },
+  "packageManager": "yarn@3.3.1"
 }
