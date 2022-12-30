@@ -48,7 +48,7 @@ export default function UserInfo(props) {
         <label className='login-info-label'>
           Create a password
           <input
-            type='text'
+            type='password'
             name='password'
             value={password}
             onChange={handleChange}
@@ -62,7 +62,7 @@ export default function UserInfo(props) {
         <label className='login-info-label'>
           Confirm password
           <input
-            type='text'
+            type='password'
             name='confirm'
             value={confirm}
             onChange={handleChange}
